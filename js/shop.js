@@ -72,6 +72,7 @@ var products = [
 // Improved version of cartList. Cart is an array of products (objects), but each one has a quantity field to define its quantity, so these products are not repeated.
 var cart = [];
 
+
 // Exercise 1
 
 //Buscar
@@ -90,6 +91,8 @@ function buy(id) {
   // 2. Add found product to the cart array
   let indiceCart = buscarCart(id);
   let indiceProducts = buscarIndiceProducts(id);
+  let subTotal = 0;
+
   if (indiceCart < 0) {
     products[indiceProducts] = Object.assign(
       { quantity: 1 },
@@ -100,32 +103,52 @@ function buy(id) {
       products[indiceProducts]
     );
     //Es treballa amb el camp subtotalWithDiscount a l'exercici 4.
-    console.log(products[indiceProducts]);
+
     cart.push(products[indiceProducts]);
+    
   } else {
+    if(cart[indiceCart].offer){
+      if( cart[indiceCart].quantity + 1 == cart[indiceCart].offer.number){
+        subTotal = (cart[indiceCart].quantity +1)  * cart[indiceCart].price;
+        cart[indiceCart] = Object.assign(
+          { subtotalWithoutDiscount: subTotal},
+          cart[indiceCart]
+          );
+      }
+      else if ( cart[indiceCart].quantity >= cart[indiceCart].offer.number){
+        let sumSubtotal = (cart[indiceCart].subtotalWithoutDiscount =
+          (cart[indiceCart].quantity)  * cart[indiceCart].price);
+    }
+    }
     let sumQuantity = (cart[indiceCart].quantity += 1);
-    let sumSubtotal = (cart[indiceCart].subtotalWithDiscount +=
+    let sumSubtotalDes = (cart[indiceCart].subtotalWithDiscount +=
       cart[indiceCart].price);
-  }
+    
+    }
+  
   applyPromotionsCart(cart, applyPromotion);
-  console.log("TOTAL IMPORT= " + calculateTotal());
   document.getElementById("count_product").innerHTML = cart.length;
+  // console.table(cart);
+  // console.log("TOTAL IMPORT= " + calculateTotal());
 }
 
 // Exercise 2
+//Buida el carret i els atributs creats a l'array products
 function cleanCart() {
-  let cartList = cart;
-  let cleanCartList = cartList.splice(0, cartList.length);
-  console.table("Clean cart List" + cleanCartList);
-
+  cart.splice(0, cart.length);
   let tableBody = document.getElementById("cart_list");
-  let tableContent = "";
-  tableBody.innerHTML = tableContent;
-
+  tableBody.innerHTML = "";
   document.getElementById("total_price").innerHTML = calculateTotal();
+  
+  for(let i = 0; i < products.length; i++){
+    delete products[i].quantity;
+    delete products[i].subtotalWithoutDiscount;
+  }
+  // console.table(products);
 }
 
 // Exercise 3
+//Suma el total utilitzant subtotalWithDiscount
 function calculateTotal() {
   let sumTotal = 0;
   // Calculate total price of the cart using the "cartList" array
@@ -136,6 +159,7 @@ function calculateTotal() {
 }
 
 // Exercise 4
+//Funcions per aplicar descompte --> def-applyPromotionsCart(array, promotion)
 function applyDiscount(array, indice) {
   let quantitat, quantitatDesc, solution;
   if (indice >= 0 && array[indice].offer) {
@@ -158,43 +182,91 @@ function applyPromotion(array) {
 }
 
 function applyPromotionsCart(array, promotion) {
-  let apply, nom, solution, subtotalIgual;
+  let apply, solution, subtotalIgual, subtotalWithoutDesc;
   for (let i = 0; i < array.length; i++) {
     subtotalIgual = array[i].subtotalWithDiscount;
-    nom = array[i].name;
+    subtotalWithoutDesc = array[i].price * array[i].quantity;
     apply = applyDiscount(array, i);
     if (apply == true) {
       solution = promotion(array[i]);
+      
       array[i].subtotalWithDiscount = solution;
-      console.table(array);
+      // console.table(array);
+      
+      
     } else {
-      solution = array[i].subtotalWithDiscount;
-      console.table(array);
+      solution = subtotalIgual;
     }
   }
 }
 
 // Exercise 5
+//Imprimeix la compra i el total a l'obrir el carret
 function printCart() {
   // Fill the shopping cart modal manipulating the shopping cart dom
-  let tableBody = document.getElementById("cart_list");
-  let tableContent = "";
 
+    let tableBody = document.getElementById("cart_list");
+    let tableContent = "";
+  
   for (let i = 0; i < cart.length; i++) {
-    let producte = `<td>${cart[i].name}</td>`;
-    let preu = `<td>$${cart[i].price}</td>`;
-    let quantitat = `<td>${cart[i].quantity}</td>`;
-    let totalDesc = `<td>$${cart[i].subtotalWithDiscount}</td>`;
-    tableContent += `<tr>${producte + preu + quantitat + totalDesc}</tr>`;
+      let producte = `<td>${cart[i].name}</td>`;
+      let preu = `<td>$${cart[i].price}</td>`;
+      let quantitat = `<span id="cantidad_${cart[i].id}">${cart[i].quantity}</span>`;
+      let boto = `<button class="btn btn-danger btn-sm" onclick="removeFromCart(${cart[i].id})">-</button>`;
+      let quantitatBoto = `<td> ${quantitat} ${boto}</td>`;
+      let totalDesc = `<span id="totalConDesc_${cart[i].id}">$${cart[i].subtotalWithDiscount}</span>`;
+      let totalNoDesc = "";
+      
+      if (cart[i].subtotalWithoutDiscount) {
+        totalNoDesc = `<span id="totalNoDesc_${cart[i].id}"><del class="text-danger">$${cart[i].subtotalWithoutDiscount}</del></span>`;
+      }
+
+      let totalPreu = `<td>${totalNoDesc ? `${totalDesc}  ${totalNoDesc} ` : totalDesc}</td>`;
+  
+      tableContent += `<tr id="fila_${cart[i].id}">${producte + preu + quantitatBoto + totalPreu}</tr>`;
+    }
+  
     tableBody.innerHTML = tableContent;
+    document.getElementById("total_price").innerHTML = calculateTotal();
   }
-  document.getElementById("total_price").innerHTML = calculateTotal();
-}
 
 // ** Nivell II **
 
 // Exercise 7
-function removeFromCart(id) {}
+function removeFromCart(id) {
+  let indice = buscarCart(id);
+
+  if (cart[indice].quantity === 1) {
+    cart.splice(indice, 1);
+    let trEliminar = document.getElementById('fila_' + id);
+    trEliminar.remove();
+    document.getElementById("count_product").innerHTML = cart.length;
+    document.getElementById("total_price").innerHTML = calculateTotal();
+  } else {
+    let rest1 = (cart[indice].quantity -= 1);
+    cart[indice].quantity = rest1;
+    if(cart[indice].offer){
+      if(rest1 < cart[indice].offer.number){
+        delete cart[indice].subtotalWithoutDiscount;
+        cart[indice].subtotalWithDiscount =
+      rest1 * cart[indice].price;
+        // console.table(cart);
+      }
+      else if ( rest1 >= cart[indice].offer.number){
+        applyPromotionsCart(cart, applyPromotion);
+        // console.log(cart[indice].subtotalWithDiscount);
+        // console.table(cart);
+      
+  }
+}else{
+  cart[indice].subtotalWithDiscount =
+       rest1 * cart[indice].price;
+      // console.table(cart);
+      // console.log("TOTAL IMPORT= " + calculateTotal());
+}
+}
+printCart();
+}
 
 function open_modal() {
   printCart();

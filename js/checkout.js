@@ -1,6 +1,6 @@
 'use strict'
 //Exercise 6
-
+//Valida el formulari.  
 function validate() {
 	(function () {
 	
