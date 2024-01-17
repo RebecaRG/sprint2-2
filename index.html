@@ -1,12 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta name="description" content="" />
 	<meta name="author" content="" />
-	<title>ShopNow</title>
+	<title>ItAcademy Tienda de Juegos</title>
+
+	<!-- Google fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica&family=IM+Fell+Double+Pica:ital@1&family=Mansalva&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&family=Roboto+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800;1,900&display=swap" rel="stylesheet"> 
+	<!-- Custom.css -->
+	<link rel="stylesheet" href="/css/custom.css">
+
 	<!-- Favicon-->
 	<link rel="icon" type="image/x-icon" href="images/favicon.ico" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -22,7 +34,9 @@
 	<!-- Navigation-->
 	<nav class="navbar py-3 py-lg-0 navbar-light bg-light navbar-expand-lg" id="navbar-example2">
 		<div class="container d-flex">
-			<a class="navbar-brand" href=/index.html>ShopNow</a>
+			<a class="navbar-brand" href=/index.html href="images/itAcademy_logo.png">
+				<img src="/images/itAcademy_logo.png">
+			</a>
 			<div class="d-flex flex-row order-lg-last align-items-center">
 
 				<button type="button" class="navbar-toggler order-last collapsed" data-bs-toggle="collapse"
@@ -34,7 +48,7 @@
 						<a href="javascript:void(0)" class="btn btn-outline-dark flex-center" type="button"
 							data-bs-toggle="modal" data-bs-target="#cartModal" onclick="open_modal()"
 							data-bs-auto-close="outside">
-							<i class="fas fa-shopping-cart me-1"></i> Cart <span
+							<i class="fas fa-shopping-cart me-1"></i> <span
 								class="badge bg-dark text-white ms-1 rounded-pill" id="count_product">0</span>
 						</a>
 					</li>
@@ -43,15 +57,16 @@
 
 			<div id="navbar" class="navbar-collapse collapse">
 
-				<ul class="navbar-nav me-auto mb-4 mb-lg-0 ms-lg-5">
-					<li class="nav-item">
-						<a class="nav-link" href="#grocery"><i class="fas fa-shopping-basket"></i> Grocery</a>
+				<ul class="navbar-nav me-auto mb-4 mb-lg-0 ms-lg-5 ">
+					<li class="nav-item ">
+						<a class="nav-link text-dark" href="#cartas"><i class="fa-solid fa-diamond text-danger"></i>
+							Juegos de cartas</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#beauty"><i class="fas fa-heart"></i> Beauty</a>
+						<a class="nav-link text-dark" href="#tablero"><i class="fa-solid fa-chess-board text-success"></i></i> Juegos de tablero</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#clothes"><i class="fas fa-tshirt"></i> Clothes</a>
+						<a class="nav-link text-dark" href="#dados"><i class="fa-solid fa-dice text-primary"></i> Juegos de dados</a>
 					</li>
 
 				</ul>
@@ -60,211 +75,222 @@
 	</nav>
 
 	<!-- Header-->
-	<header class="bg-dark py-5">
+	<header class="py-5 imagen">
+
 		<div class="container px-4 px-lg-5 my-5">
 			<div class="text-center text-white">
-				<h1 class="display-4 fw-bolder">IT Academy Shop</h1>
-				<p class="lead fw-normal text-white-50 mb-0">Get up to 50% off Today Only!</p>
+				<h1 class="display-4 fw-bolder">
+					<img src="/images/itAcademy_logo_blanco_mediano_transp.png" class="img-fluid">
+				</h1>
+				<!-- <p class="lead fw-normal text-white-50 mb-0">Get up to 50% off Today Only!</p> -->
 			</div>
 		</div>
 	</header>
 	<!-- Section-->
-	<section class="pt-5" id="grocery">
-		<h2 class="text-center"><i class="fas fa-shopping-basket pe-3"></i>Grocery</h2>
-		<div class="container px-4 px-lg-5 mt-5">
+	<section class="pt-5" id="cartas">
+		<div class="card shadow h-100 col-9 mx-auto">
+		<h2 class="text-start ps-4 py-3 mt-3"><i class="fa-solid fa-diamond text-danger"></i> &nbsp Juegos de cartas</h2>
+		<div class="container px-4 px-lg-2 mt-3">
 			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 				<div class="col mb-5">
-					<div class="card h-100">
-						<img class="card-img-top" src="./images/product.svg" alt="..." />
+					<div class="card shadow h-100 cardHover">
+						<img class="card-img-top" src="./images/jc-pelusas.jpg" alt="Juego de cartas Pelusas" />
 						<div class="card-body p-4">
 							<div class="text-center">
-								<h5 class="fw-bolder">Cooking Oil</h5>
-								$10.5
+								<h5 class="fw-bolder">Pelusas</h5>
+								12.50€
 							</div>
 						</div>
 						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 							<div class="text-center"><button type="button" onclick="buy(1)"
-									class="btn btn-outline-dark">Add to cart</button></div>
+									class="btn  btn-outline-danger">Comprar</button></div>
 						</div>
 					</div>
 				</div>
 				<div class="col mb-5">
-					<div class="card h-100">
-						<img class="card-img-top" src="./images/product.svg" alt="..." />
+					<div class="card shadow h-100 cardHover">
+						<img class="card-img-top" src="./images/jc-virus.jpeg" alt="Juego de cartas Virus" />
 						<div class="card-body p-4">
 							<div class="text-center">
-								<h5 class="fw-bolder">Pasta</h5>
-								$6.25
+								<h5 class="fw-bolder">Virus</h5>
+								14.35€
 							</div>
 						</div>
 						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 							<div class="text-center"><button type="button" onclick="buy(2)"
-									class="btn btn-outline-dark">Add to cart</button></div>
+									class="btn btn-outline-danger">Comprar</button></div>
 						</div>
 					</div>
 				</div>
 				<div class="col mb-5">
-					<div class="card h-100">
-						<img class="card-img-top" src="./images/product.svg" alt="..." />
+					<div class="card shadow h-100 cardHover">
+						<img class="card-img-top " src="./images/jc-mia.jpg" alt="Juego de cartas ¡Mía!" />
 						<div class="card-body p-4">
 							<div class="text-center">
-								<h5 class="fw-bolder">Instant cupcake mixture</h5>
-								$5
+								<h5 class="fw-bolder">¡Mía!</h5>
+								16.45€
 							</div>
 						</div>
 						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 							<div class="text-center"><button type="button" onclick="buy(3)"
-									class="btn btn-outline-dark">Add to cart</button></div>
+									class="btn btn-outline-danger">Comprar</button></div>
 						</div>
 					</div>
 				</div>
 
 			</div>
 		</div>
+	</div>
 	</section>
-	<section class="pt-5" id="beauty">
-		<h2 class="text-center"><i class="fas fa-heart pe-3"></i>Beauty</h2>
-		<div class="container px-4 px-lg-5 mt-5">
+	<section class="pt-5" id="tablero">
+		<div class="card shadow h-100 col-9 mx-auto">
+		
+		<h2 class="text-start ps-4 py-3 mt-3"><i class="fa-solid fa-chess-board text-success"></i> &nbsp Juegos de tablero</h2>
+		<div class="container px-4 px-lg-2 mt-3">
 			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 				<div class="col mb-5">
-					<div class="card h-100">
-						<img class="card-img-top" src="./images/product.svg" alt="..." />
+					<div class="card shadow h-100 cardHover">
+						<img class="card-img-top" src="./images/jt-alta-tensión.png" alt="Juego de tablero Alta tensión" />
 						<div class="card-body p-4">
 							<div class="text-center">
-								<h5 class="fw-bolder">All-in-1</h5>
-								$260
+								<h5 class="fw-bolder">Alta tensión</h5>
+								34.75€
 							</div>
 						</div>
 						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 							<div class="text-center"><button type="button" onclick="buy(4)"
-									class="btn btn-outline-dark">Add to cart</button></div>
+									class="btn btn-outline-success">Comprar</button></div>
 						</div>
 					</div>
 				</div>
 				<div class="col mb-5">
-					<div class="card h-100">
-						<img class="card-img-top" src="./images/product.svg" alt="..." />
+					<div class="card shadow h-100 cardHover">
+						<img class="card-img-top" src="./images/jt-castillos-catapultas.png" alt="Juego de tablero Castillos y catapultas" />
 						<div class="card-body p-4">
 							<div class="text-center">
-								<h5 class="fw-bolder">Zero makeup kit</h5>
-								$20.5
+								<h5 class="fw-bolder">Castillos y catapultas</h5>
+								32.95€
 							</div>
 						</div>
 						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 							<div class="text-center"><button type="button" onclick="buy(5)"
-									class="btn btn-outline-dark">Add to cart</button></div>
+									class="btn btn-outline-success">Comprar</button></div>
 						</div>
 					</div>
 				</div>
 				<div class="col mb-5">
-					<div class="card h-100">
-						<img class="card-img-top" src="./images/product.svg" alt="..." />
+					<div class="card shadow h-100 cardHover">
+						<img class="card-img-top" src="./images/jt-pocimas-brebajes.jpeg" alt="Juego de tablero Pócimas y brebajes" />
 						<div class="card-body p-4">
 							<div class="text-center">
-								<h5 class="fw-bolder">Lip tints</h5>
-								$12.75
+								<h5 class="fw-bolder">Pócimas y brebajes</h5>
+								46.35€
 							</div>
 						</div>
 						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 							<div class="text-center"><button type="button" onclick="buy(6)"
-									class="btn btn-outline-dark">Add to cart</button></div>
+									class="btn btn-outline-success">Comprar</button></div>
 						</div>
 					</div>
 				</div>
 
 			</div>
 		</div>
+	</div>
 	</section>
-	<section class="pt-5" id="clothes">
-		<h2 class="text-center"><i class="fas fa-tshirt pe-3"></i>Clothes</h2>
-		<div class="container px-4 px-lg-5 mt-5">
+	<section class="pt-5" id="dados">
+		<div class="card shadow h-100 col-9 mx-auto mb-4">
+		<h2 class="text-start ps-4 py-3 mt-3"><i class="fa-solid fa-dice text-primary"></i> &nbsp Juegos de dados</h2>
+		<div class="container px-4 px-lg-2 mt-3">
 			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 				<div class="col mb-5">
-					<div class="card h-100">
-						<img class="card-img-top" src="./images/product.svg" alt="..." />
+					<div class="card shadow h-100 cardHover">
+						<img class="card-img-top" src="./images/jd-Elreidelosdados.jpeg" alt="Juego de dados El rey de los dados" />
 						<div class="card-body p-4">
 							<div class="text-center">
-								<h5 class="fw-bolder">Lawn dress</h5>
-								$15
+								<h5 class="fw-bolder">El rey de los dados</h5>
+								19.99€
 							</div>
 						</div>
 						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 							<div class="text-center"><button type="button" onclick="buy(7)"
-									class="btn btn-outline-dark">Add to cart</button></div>
+									class="btn btn-outline-primary">Comprar</button></div>
 						</div>
 					</div>
 				</div>
 				<div class="col mb-5">
-					<div class="card h-100">
-						<img class="card-img-top" src="./images/product.svg" alt="..." />
+					<div class="card shadow h-100 cardHover">
+						<img class="card-img-top" src="./images/jd-piko-piko.jpeg" alt="Juego de dados Piko Piko" />
 						<div class="card-body p-4">
 							<div class="text-center">
-								<h5 class="fw-bolder">Lawn-chiffon combo</h5>
-								$19.99
+								<h5 class="fw-bolder">Piko Piko</h5>
+								12.35€
 							</div>
 						</div>
 						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 							<div class="text-center"><button type="button" onclick="buy(8)"
-									class="btn btn-outline-dark">Add to cart</button></div>
+									class="btn btn-outline-primary">Comprar</button></div>
 						</div>
 					</div>
 				</div>
 				<div class="col mb-5">
-					<div class="card h-100">
-						<img class="card-img-top" src="./images/product.svg" alt="..." />
+					<div class="card shadow h-100 cardHover">
+						<img class="card-img-top" src="./images/jd-paradice.jpeg" alt="Juego de dados Paradice" />
 						<div class="card-body p-4">
 							<div class="text-center">
-								<h5 class="fw-bolder">Toddler Frock</h5>
-								$9.99
+								<h5 class="fw-bolder">Paradice</h5>
+								29.95€
 							</div>
 						</div>
 						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 							<div class="text-center"><button type="button" onclick="buy(9)"
-									class="btn btn-outline-dark">Add to cart</button></div>
+									class="btn btn-outline-primary">Comprar</button></div>
 						</div>
 					</div>
 				</div>
 
 			</div>
 		</div>
+	</div>
 	</section>
 
 	<!-- Footer-->
 	<footer class="py-3 bg-dark">
 		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
+			<p class="m-0 text-center text-white">Copyright &copy; ITACADEMY Tienda de juegos 2024</p>
 		</div>
 	</footer>
 
 	<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-cart-arrow-down"></i> My Cart</h5>
+				<div class="modal-header bg-secondary">
+					<h5 class="modal-title text-white" id="exampleModalLabel"><i class="fas fa-cart-arrow-down text-white"></i> Cesta de la compra</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<h3 class="text-center bill px-5">Shopping Cart</h3>
+					<!-- <h3 class="text-center bill px-5">Shopping Cart</h3> -->
 					<table class="table">
 						<thead>
 							<tr>
-								<th scope="col" class="col-4">Product</th>
-								<th scope="col" class="col-2">Price</th>
-								<th scope="col" class="col-2">Qty.</th>
-								<th scope="col" class="col-4">Total <small>(with discount)</small></th>
+								<th scope="col" class="col-4">Producto</th>
+								<th scope="col" class="col-2">Precio</th>
+								<th scope="col" class="col-2">Cantidad</th>
+								<th scope="col" class="col-4">Subtotal</th>
+								<!-- <th scope="col" class="col-4">Total <small>(with discount)</small></th> -->
 							</tr>
 						</thead>
 						<tbody id="cart_list">
 						</tbody>
 					</table>
-					<div class="text-center fs-3">
-						Total: $<span id="total_price"></span>
+					<div class="bg-light text-center fs-4"><b>
+						TOTAL: <span id="total_price"></span>€</b>
 					</div>
-					<div class="text-center">
-						<a href="checkout.html" class="btn btn-primary m-3">Checkout</a>
-						<a href="javascript:void(0)" onclick="cleanCart()" class="btn btn-primary m-3">Clean Cart</a>
+					<div class="row d-flex align-items-center justify-content-center">
+						<a href="checkout.html" class="btn btn-secondary m-3 col-3">Pagar</a>
+						<a href="javascript:void(0)" onclick="cleanCart()" class="btn btn-secondary m-3 col-3">Vaciar cesta</a>
 					</div>
-				</div>
+					</div>
 			</div>
 		</div>
 	</div>

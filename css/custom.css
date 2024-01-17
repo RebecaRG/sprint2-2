@@ -1,0 +1,27 @@
+header.imagen{
+    background-image: url("../images/header-fichas.jpg");
+    background-size: 100%;
+    background-position: center top;
+    background-repeat: no-repeat; 
+} 
+
+.cardHover:hover{
+    transform: scale(1.1); 
+    transition: transform 0.3s ease;
+}
+
+.modal-dialog{
+    font-family: 'IBM Plex Mono', monospace !important;
+    font-family: 'Roboto Condensed', sans-serif !important;
+}
+
+body{
+    font-family: 'IM Fell Double Pica', serif !important;
+    font-family: 'IM Fell DW Pica', serif !important;
+    font-family: 'Mansalva', sans-serif !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+
+
+

@@ -2,9 +2,9 @@
 var products = [
   {
     id: 1,
-    name: "Cooking oil",
-    price: 10.5,
-    type: "grocery",
+    name: "Pelusas",
+    price: 12.50,
+    type: "cartas",
     offer: {
       number: 3,
       percent: 20,
@@ -12,15 +12,15 @@ var products = [
   },
   {
     id: 2,
-    name: "Pasta",
-    price: 6.25,
-    type: "grocery",
+    name: "Virus",
+    price: 14.35,
+    type: "cartas",
   },
   {
     id: 3,
-    name: "Instant cupcake mixture",
-    price: 5,
-    type: "grocery",
+    name: "¡Mía!",
+    price: 16.45,
+    type: "cartas",
     offer: {
       number: 10,
       percent: 30,
@@ -28,39 +28,39 @@ var products = [
   },
   {
     id: 4,
-    name: "All-in-one",
-    price: 260,
-    type: "beauty",
+    name: "Alta tensión",
+    price: 34.75,
+    type: "tablero",
   },
   {
     id: 5,
-    name: "Zero Make-up Kit",
-    price: 20.5,
-    type: "beauty",
+    name: "Castillos y catapiltas",
+    price: 32.95,
+    type: "tablero",
   },
   {
     id: 6,
-    name: "Lip Tints",
-    price: 12.75,
-    type: "beauty",
+    name: "Pócimas y brebajes",
+    price: 46.35,
+    type: "tablero",
   },
   {
     id: 7,
-    name: "Lawn Dress",
-    price: 15,
-    type: "clothes",
+    name: "El rey de los dados",
+    price: 19.99,
+    type: "dados",
   },
   {
     id: 8,
-    name: "Lawn-Chiffon Combo",
-    price: 19.99,
-    type: "clothes",
+    name: "Piko Piko",
+    price: 12.35,
+    type: "dados",
   },
   {
     id: 9,
-    name: "Toddler Frock",
-    price: 9.99,
-    type: "clothes",
+    name: "Paradice",
+    price: 29.95,
+    type: "dados",
   },
 ];
 
@@ -117,7 +117,7 @@ function buy(id) {
       }
       else if ( cart[indiceCart].quantity >= cart[indiceCart].offer.number){
         let sumSubtotal = (cart[indiceCart].subtotalWithoutDiscount =
-          (cart[indiceCart].quantity)  * cart[indiceCart].price);
+          (cart[indiceCart].quantity + 1)  * cart[indiceCart].price);
     }
     }
     let sumQuantity = (cart[indiceCart].quantity += 1);
@@ -210,15 +210,15 @@ function printCart() {
   
   for (let i = 0; i < cart.length; i++) {
       let producte = `<td>${cart[i].name}</td>`;
-      let preu = `<td>$${cart[i].price}</td>`;
+      let preu = `<td>${cart[i].price}€</td>`;
       let quantitat = `<span id="cantidad_${cart[i].id}">${cart[i].quantity}</span>`;
       let boto = `<button class="btn btn-danger btn-sm" onclick="removeFromCart(${cart[i].id})">-</button>`;
       let quantitatBoto = `<td> ${quantitat} ${boto}</td>`;
-      let totalDesc = `<span id="totalConDesc_${cart[i].id}">$${cart[i].subtotalWithDiscount}</span>`;
+      let totalDesc = `<span id="totalConDesc_${cart[i].id}">${cart[i].subtotalWithDiscount.toFixed(2)}€</span>`;
       let totalNoDesc = "";
       
       if (cart[i].subtotalWithoutDiscount) {
-        totalNoDesc = `<span id="totalNoDesc_${cart[i].id}"><del class="text-danger">$${cart[i].subtotalWithoutDiscount}</del></span>`;
+        totalNoDesc = `<span id="totalNoDesc_${cart[i].id}"><del class="text-danger">${cart[i].subtotalWithoutDiscount.toFixed(2)}€</del></span>`;
       }
 
       let totalPreu = `<td>${totalNoDesc ? `${totalDesc}  ${totalNoDesc} ` : totalDesc}</td>`;
@@ -227,7 +227,7 @@ function printCart() {
     }
   
     tableBody.innerHTML = tableContent;
-    document.getElementById("total_price").innerHTML = calculateTotal();
+    document.getElementById("total_price").innerHTML = calculateTotal().toFixed(2);
   }
 
 // ** Nivell II **
@@ -253,6 +253,7 @@ function removeFromCart(id) {
         // console.table(cart);
       }
       else if ( rest1 >= cart[indice].offer.number){
+        cart[indice].subtotalWithoutDiscount = rest1 * cart[indice].price;
         applyPromotionsCart(cart, applyPromotion);
         // console.log(cart[indice].subtotalWithDiscount);
         // console.table(cart);
